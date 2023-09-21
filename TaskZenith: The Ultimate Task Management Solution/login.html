@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TODO</title>
+    <link rel="stylesheet" href="styles2.css">
+</head>
+
+<body>
+    <div id="login-box">
+        <div class="left">
+            <h1>Login</h1>
+            <input type="text" name="email" id="email" placeholder="E-mail" />
+            <input type="password" name="password" id="password" placeholder="Password" />
+            <input type="submit" id="login" name="login_submit" value="Login" />
+        </div>
+    </div>
+
+    <!-- Include your JavaScript code here -->
+
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.4.0/firebase-app.js";
+        import { getAuth, signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/10.4.0/firebase-auth.js";
+
+        // Firebase configuration (same as in your signup page)
+        const firebaseConfig = {
+            apiKey: "AIzaSyAVnWjyaVrTsIKScMdQFTTbEsb2-UW7VgQ",
+            authDomain: "todo-f131e.firebaseapp.com",
+            databaseURL: "https://todo-f131e-default-rtdb.firebaseio.com",
+            projectId: "todo-f131e",
+            storageBucket: "todo-f131e.appspot.com",
+            messagingSenderId: "49245241009",
+            appId: "1:49245241009:web:de920af78b903a4942ec90",
+            measurementId: "G-SHG5JWTGJ1"
+        };
+
+        const app = initializeApp(firebaseConfig);
+        const auth = getAuth(app);
+
+        document.addEventListener('DOMContentLoaded', function () {
+            const login = document.getElementById('login');
+            login.addEventListener('click', (e) => {
+                var email = document.getElementById('email').value;
+                var password = document.getElementById('password').value;
+
+                signInWithEmailAndPassword(auth, email, password)
+                    .then((userCredential) => {
+                        // Signed in successfully
+                        // Redirect to todo.html after successful login
+                        window.location.href = 'todo.html';
+                    })
+                    .catch((error) => {
+                        const errorCode = error.code;
+                        const errorMessage = error.message;
+                        alert(errorMessage);
+                    });
+            });
+        });
+    </script>
+</body>
+
+</html>

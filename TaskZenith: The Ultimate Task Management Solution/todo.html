@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Todo App</title>
+    <link rel="stylesheet" href="styles3.css">
+</head>
+
+<body>
+    <div class="container">
+        <h1>Todo App</h1>
+        <div class="add-task">
+            <input type="text" id="task" placeholder="Add a new task">
+            <input type="date" id="due-date">
+            <button onclick="addTask()">Add Task</button>
+        </div>
+        <div class="task-list">
+            <h2>Tasks:</h2>
+            <div id="tasks"></div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+    <script type="module">
+        // Initialize Firebase
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.4.0/firebase-app.js";
+        import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.4.0/firebase-analytics.js";
+        import { getAuth, createUserWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/10.4.0/firebase-auth.js";
+        import { getDatabase, ref, set } from "https://www.gstatic.com/firebasejs/10.4.0/firebase-database.js";
+
+        // Your web app's Firebase configuration
+        const firebaseConfig = {
+            apiKey: "AIzaSyAVnWjyaVrTsIKScMdQFTTbEsb2-UW7VgQ",
+            authDomain: "todo-f131e.firebaseapp.com",
+            databaseURL: "https://todo-f131e-default-rtdb.firebaseio.com",
+            projectId: "todo-f131e",
+            storageBucket: "todo-f131e.appspot.com",
+            messagingSenderId: "49245241009",
+            appId: "1:49245241009:web:de920af78b903a4942ec90",
+            measurementId: "G-SHG5JWTGJ1"
+        };
+
+        const app = initializeApp(firebaseConfig);
+        const analytics = getAnalytics(app);
+        const auth = getAuth(app);
+        const database = getDatabase(app);
+        firebase.initializeApp(firebaseConfig);
+
+
+        // Function to add a task
+        // Wait for the authentication state to be ready
+        onAuthStateChanged(auth, (user) => {
+            if (user) {
+                // Function to add a task
+                function addTask() {
+                    const taskTitle = document.getElementById('task').value;
+                    const dueDate = document.getElementById('due-date').value;
+
+                    const userId = user.uid;
+
+                    // Create a new task object
+                    const newTask = {
+                        title: taskTitle,
+                        dueDate: dueDate,
+                        completed: false // You can add more properties as needed
+                    };
+
+                    // Save the new task under the user's UID in Firebase Realtime Database
+                    const taskRef = push(ref(database, 'tasks/' + userId));
+                    set(taskRef, newTask)
+                        .then(() => {
+                            // Task saved successfully
+                            alert('Task added successfully');
+                            document.getElementById('task').value = ''; // Clear the input field
+                            document.getElementById('due-date').value = ''; // Clear the due date field
+                        })
+                        .catch((error) => {
+                            // Handle errors
+                            console.error('Error adding task:', error);
+                        });
+                }
+            } else {
+                // User is not authenticated, handle this case (e.g., show a message or redirect to login)
+                alert('You need to be logged in to add tasks.');
+            }
+        });
+    </script>
+</body>
+
+</html>
