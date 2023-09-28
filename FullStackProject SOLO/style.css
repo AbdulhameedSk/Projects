@@ -1,0 +1,126 @@
+* {
+    box-sizing: border-box;
+    font-family: 'Montserrat', sans-serif;
+    margin: 0;
+    padding: 0;
+  }
+  
+  body {
+    background-color: #000000;
+    color: #ffffff;
+  }
+  
+  a {
+    color: #a8a3a3;
+    text-decoration: none;
+  }
+  
+  a:hover {
+    color: #ffffff;
+    cursor: pointer;
+  }
+  
+  header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 30px;
+    position: sticky;
+    top: 0;
+    left: 0;
+    right: 0;
+    background-color: rgb(0, 0, 0);
+    z-index: 9999;
+    margin-bottom: 6px;
+  }
+  
+  h1 {
+    font-size: 48px;
+    font-weight: 700;
+  }
+  
+  nav {
+    display: flex;
+  }
+  
+  nav a {
+    margin-left: 20px;
+  }
+  
+  main {
+
+    display: flex;
+    justify-content: space-between;
+    padding: 30px;
+    flex-wrap: wrap;
+  }
+  
+  .post {
+    background-color: #1c1c1c;
+    border-radius: 8px;
+    margin-bottom: 50px;
+    overflow: auto;
+    width: calc(33.33% - 20px);
+    height: 100%;
+  }
+  
+  .post:hover {
+    transform: translateY(-10px);
+  }
+  
+  .post img {
+    height: 50%;
+    width: 100%;
+  }
+  
+  .post h2 {
+    font-size: 24px;
+    font-weight: 700;
+    padding: 20px;
+  }
+  
+  .post p {
+    font-size: 16px;
+    padding: 0 20px 20px;
+  }
+  
+  .post a {
+    background-color: rgb(212, 22, 22);
+    border-radius: 4px;
+    color: white;
+    display: block;
+    font-size: 16px;
+    font-weight: 700;
+    margin: 20px;
+    padding: 15px;
+    text-align: center;
+    text-transform: uppercase;
+    transition: background-color 0.2s ease-in-out;
+  }
+  
+  .post a:hover {
+    background-color: red;
+  }
+  .pagenation {
+    display: flex;
+    justify-content: center;
+    padding-bottom: 20px;
+  }
+  
+  .pagenation a {
+    color: whitesmoke;
+				float: left;
+				padding: 8px 16px;
+				text-decoration:none;
+    margin: 10px 5px;}
+
+  
+  footer {
+    display: flex;
+    
+    background-color: #141414;
+    display: flex;
+    justify-content: center;
+    padding: 20px;
+  }
+  

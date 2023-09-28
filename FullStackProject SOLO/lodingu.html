@@ -1,0 +1,54 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Loading</title>
+	<style>
+	*{
+		margin: 0;
+		padding: 0;
+		box-sizing: border-box;
+	}
+	body{
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		height: 100ph;
+		margin: 300px;
+	}
+	.line{
+		width: 10px;
+		height: 10px;
+		background-color: blue;
+		margin-left: 10px;
+		animation: scale 1000ms infinite;
+	}
+	@keyframes scale{
+		30%{
+			transform: scaleY(4);
+		}
+		60%{
+			transform: scaleY(1);
+		}
+	}
+	.container{
+		display: flex;
+
+	}
+	</style>
+
+</head>
+<body>
+	<div class="container">
+		<div class="line">	</div>
+		<div class="line" style="animation-delay: 100ms;">	</div>
+		<div class="line" style="animation-delay: 200ms;">	</div>
+		<div class="line" style="animation-delay: 300ms;">	</div>
+		<div class="line" style="animation-delay: 400ms;">	</div>
+		<div class="line" style="animation-delay: 500ms;">	</div>
+
+	</div>
+</body>
+</html>

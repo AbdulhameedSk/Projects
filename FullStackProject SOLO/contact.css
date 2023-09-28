@@ -1,0 +1,81 @@
+* {
+    box-sizing: border-box;
+    font-family: 'Montserrat', sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-color: rgb(0, 0, 0);
+    /* Darker black */
+    color: aliceblue;
+}
+
+header {
+    background-color: rgb(0, 0, 0);
+    /* Dark gray background for the header */
+    padding: 15px;
+}
+
+.contact {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+
+}
+
+.center {
+    text-align: center;
+}
+
+form {
+    background-color: rgb(0, 0, 0);
+    /* Dark gray background for the form */
+    padding: 20px;
+    border-radius: 10px;
+    /* Rounded corners for the form */
+    box-shadow: 10px 10px 10px rgba(255, 255, 255, 0.2);
+    /* Add a slight shadow */
+    height: 300px;
+    width: 300px;
+}
+
+.input-group {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 15px;
+}
+
+label {
+    color: aliceblue;
+}
+
+input[type=email],
+textarea {
+    background-color: rgb(0, 0, 0);
+    /* Slightly lighter black */
+    border: 1px solid aliceblue;
+    border-radius: 5px;
+    padding: 10px;
+    color: white;
+    width: 100%;
+}
+
+/* Style the submit button */
+form button[type=submit] {
+    background-color: #ff0000;
+    /* Red button color */
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+/* Style the submit button on hover */
+form button[type=submit]:hover {
+    background-color: #0056b3;
+    /* Darker blue on hover */
+}
